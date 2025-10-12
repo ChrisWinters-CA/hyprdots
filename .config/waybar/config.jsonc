@@ -11,11 +11,11 @@
         "cpu",
         "memory",
         "temperature",
-//	"disk#system",
-//	"disk#retro",
-//	"disk#games",
-//	"disk#alpha",
-//	"disk#omega",
+        "disk#system",
+        "disk#retro",
+        "disk#games",
+        "disk#alpha",
+        "disk#omega",
         "hyprland/submap"
     ],
     "modules-center": [
@@ -150,7 +150,7 @@
 
     "custom/brightness": {
     "exec": "ddcutil -b 7 getvcp 10 -t | awk '{print $4}'",
-    "interval": 1,
+    "interval": 10,
     "format": " {}%",
     "on-scroll-down": "$HOME/.config/waybar/scripts/brightness.sh -10",
     "on-scroll-up": "$HOME/.config/waybar/scripts/brightness.sh +10",
@@ -213,17 +213,47 @@
     },
 
         "cpu": {
-        "interval": 1,
+        "interval": 10,
         "format": "  {usage}%",
         "tooltip": true
     },
 
         "memory": {
-        "interval": 1,
+        "interval": 10,
         "format": "  {percentage}%",
         "tooltip": true,
-        "tooltip-format": "{used}G/{total}G"
+        "tooltip-format": "{used}GiB/{total}GiB"
     },
+    "disk#system": {
+        "path": "/",
+        "format": "Root: {percentage_used}%",
+        "tooltip-format": "Root: {used} used out of {total}",
+        "interval": 30
+    },
+    "disk#retro": {
+        "path": "/media/retro",
+        "format": "Retro: {percentage_used}%",
+        "tooltip-format": "Retro: {used} used out of {total}",
+        "interval": 30
+    },
+    "disk#games": {
+        "path": "/media/games",
+        "format": "Games: {percentage_used}%",
+        "tooltip-format": "Games: {used} used out of {total}",
+        "interval": 30
+    },
+    "disk#alpha": {
+        "path": "/media/alpha",
+        "format": "Alpha: {percentage_used}%",
+        "tooltip-format": "Alpha: {used} used out of {total}",
+        "interval": 30
+    },
+    "disk#omega": {
+        "path": "/media/omega",
+        "format": "Omega: {percentage_used}%",
+        "tooltip-format": "Omega: {used} used out of {total}",
+        "interval": 30
+},
 
     "custom/menu": {
         "format": "{icon} Menu",
