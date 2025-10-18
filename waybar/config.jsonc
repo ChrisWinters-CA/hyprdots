@@ -7,24 +7,25 @@
     "spacing": 6, // Gaps between modules
     "modules-left": [
 //        "custom/menu",
-        "hyprland/workspaces",
+        "custom/power",
         "cpu",
         "memory",
         "temperature",
         "hyprland/submap"
     ],
     "modules-center": [
-    "clock",
+    "hyprland/workspaces",
     ],
     "modules-right": [
         "custom/notification",
-        "custom/brightness",
-        "bluetooth",
-        "network",
+//        "custom/brightness",
+//        "tray",
         "pulseaudio",
+        "bluetooth",
+	"network",
         "tray",
-        "custom/weather",
-        "custom/power"
+//        "custom/weather",
+	"clock"
         // Unused Modules
         // "idle_inhibitor",
     ],
@@ -51,13 +52,15 @@
     },
 
     "clock": {
-        "timezone": "Canada/Eastern",
+        "timezone": "America/Toronto",
         "format": "{:%I:%M %p}",
         "tooltip-format": "<big><tt><small>{calendar}</small></tt></big>",
         "on-click": "~/.config/hypr/scripts/float_calendar.sh"
     },
 
     "temperature": {
+    	"interval": 5,
+	"hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""],
